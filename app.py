@@ -1,7 +1,8 @@
 
 
 import numpy as np
-from Flask import Flask, request, jsonify, render_template
+from flask import Flask
+from flask import request, jsonify, render_template
 import pickle
 
 app = Flask (__name__)
@@ -19,7 +20,7 @@ def predict():
     
     output = round (prediction [0],2)
     
-    return render_template('index.html'),prediction_test='Employee Salary should be $ {}'.format(output)
+    return render_template('index.html',prediction_test='DangerLevel'.format(output))
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
@@ -29,7 +30,7 @@ def predict_api():
     output = prediction[0]
     return jsonify (output)
 
-if__name__=="__main__":
+if __name__ == "__main__":
     app.run(debug=True)
     
     
